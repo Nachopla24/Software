@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails Goodness: development" uuid="ca7f50d1-ce5e-4a69-9d75-a83b88b88cff">
+      <database-info product="PostgreSQL" version="9.5.12" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>nacho</user-name>
+      <introspection-schemas>softwaredb:public</introspection-schemas>
+    </data-source>
+    <data-source name="Rails Goodness: production" uuid="741fe46f-20e0-4aee-9a75-fbb32b5f4e6d">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>nacho</user-name>
+    </data-source>
+  </component>
+</project>
