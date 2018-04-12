@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406220149) do
+ActiveRecord::Schema.define(version: 20180411202806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20180406220149) do
     t.string "nombre"
     t.string "descripcion"
     t.string "codigo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carreraAsignatura", force: :cascade do |t|
+    t.bigint "carreras_id"
+    t.bigint "asignaturas_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asignaturas_id"], name: "index_carreraAsignatura_on_asignaturas_id"
+    t.index ["carreras_id"], name: "index_carreraAsignatura_on_carreras_id"
+  end
+
+  create_table "carrera_asignaturas", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,4 +61,6 @@ ActiveRecord::Schema.define(version: 20180406220149) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "carreraAsignatura", "asignaturas", column: "asignaturas_id"
+  add_foreign_key "carreraAsignatura", "carreras", column: "carreras_id"
 end

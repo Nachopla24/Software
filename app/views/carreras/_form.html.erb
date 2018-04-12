@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :asignaturas %>
+    <%= form.collection_select :id_asignatura, Asignatura.all, :id, :nombre , {include_blank: 'SElecciona '} %>
+  </div>
+
+  <div class="field">
     <%= form.label :descripcion %>
     <%= form.text_field :descripcion, id: :carrera_descripcion %>
   </div>
