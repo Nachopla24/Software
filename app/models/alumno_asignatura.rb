@@ -1,0 +1,2 @@
+class AlumnoAsignatura < ApplicationRecord
+end

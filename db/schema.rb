@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419053853) do
+ActiveRecord::Schema.define(version: 20180424034059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alumnoAsignatura", force: :cascade do |t|
+    t.bigint "alumnos_id"
+    t.bigint "asignaturas_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumnos_id"], name: "index_alumnoAsignatura_on_alumnos_id"
+    t.index ["asignaturas_id"], name: "index_alumnoAsignatura_on_asignaturas_id"
+  end
+
+  create_table "alumno_asignaturas", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "alumnos", force: :cascade do |t|
     t.string "nombre"
@@ -79,6 +93,8 @@ ActiveRecord::Schema.define(version: 20180419053853) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "alumnoAsignatura", "alumnos", column: "alumnos_id"
+  add_foreign_key "alumnoAsignatura", "asignaturas", column: "asignaturas_id"
   add_foreign_key "carreraAsignatura", "asignaturas", column: "asignaturas_id"
   add_foreign_key "carreraAsignatura", "carreras", column: "carreras_id"
 end
