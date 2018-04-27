@@ -2,9 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-:root {
+.body-color{
+  background-color: #00695c;
+}
 
-	margin: 20px;
+.jumbotron {
+  background-color:#2BBBAD !important; 
+}
+
+.borde{
+  border-radius: 15px;
 }
 
 .wrapper {
