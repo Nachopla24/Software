@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424034059) do
+ActiveRecord::Schema.define(version: 20180430191321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,16 +24,12 @@ ActiveRecord::Schema.define(version: 20180424034059) do
     t.index ["asignaturas_id"], name: "index_alumnoAsignatura_on_asignaturas_id"
   end
 
-  create_table "alumno_asignaturas", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "alumnos", force: :cascade do |t|
     t.string "nombre"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_id"
   end
 
   create_table "asignaturas", force: :cascade do |t|
@@ -53,11 +49,6 @@ ActiveRecord::Schema.define(version: 20180424034059) do
     t.index ["carreras_id"], name: "index_carreraAsignatura_on_carreras_id"
   end
 
-  create_table "carrera_asignaturas", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "carreras", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
@@ -71,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180424034059) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "carreras_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -91,10 +83,14 @@ ActiveRecord::Schema.define(version: 20180424034059) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "departamento_id"
   end
 
   add_foreign_key "alumnoAsignatura", "alumnos", column: "alumnos_id"
   add_foreign_key "alumnoAsignatura", "asignaturas", column: "asignaturas_id"
+  add_foreign_key "alumnos", "posts"
   add_foreign_key "carreraAsignatura", "asignaturas", column: "asignaturas_id"
   add_foreign_key "carreraAsignatura", "carreras", column: "carreras_id"
+  add_foreign_key "departamentos", "carreras", column: "carreras_id"
+  add_foreign_key "universidads", "departamentos"
 end

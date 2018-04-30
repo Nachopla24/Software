@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#devise para autentificacion 
+gem 'devise'
 # Agrega gema bootstrap-sass para el Fonted
 gem 'bootstrap-sass'
 gem 'jquery-rails'
