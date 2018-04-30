@@ -2,10 +2,13 @@
   <div class="row">
     <div class="media">
     <% @posts.each do |post| %>
-      <div class="media-left">
-      <!-- Renders image -->
+      <div class="col">
+        <div class="media-left">
+        <!-- Renders image -->
         <%= link_to image_tag(post.image.url, class: 'media-object'), post.image.url, target: '_blank' %>
+        </div>  
       </div>
+    </div>  
     <div class="media-body">
       <h4 class="media-heading"><%= post.titulo %></h4>
     </div>

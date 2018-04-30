@@ -1,4 +1,4 @@
-class Asignatura < ApplicationRecord
-	has_and_belongs_to_many :asignaturas
-	has_many :posts, dependent: :destroy
+class Alumno < ApplicationRecord
+	has_and_belongs_to_many :alumnoAsignatura
+	has_many :posts
 end
