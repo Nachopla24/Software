@@ -1,19 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="media">
-    <% @posts.each do |post| %>
-      <div class="col">
-        <div class="media-left">
-        <!-- Renders image -->
-        <%= link_to image_tag(post.image.url, class: 'media-object'), post.image.url, target: '_blank' %>
-        </div>  
+<body class="body-color">
+  <div class="container">
+    
+      <div class="jumbotron borde">
+        <h1>Bienvenidos a Goodness</h1>
+        <p>Aqui encontraras toda clase de informacion acerca de distintas asignaturas, cursadas en diferentes universidades del pais; esta plataforma tiene como finalidad ayudar aquellos que busquen informacion captada por estudiantes universitarios </p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
       </div>
-    </div>  
-    <div class="media-body">
-      <h4 class="media-heading"><%= post.titulo %></h4>
-    </div>
-    <%= link_to "Descargar" , post.image.url, download: post.image.original_filename %>
-  <% end %>
-</div>    
+
+      <div class="row">
+        <% @posts.each do |post| %>
+          <div class="col-sm-3">
+            <figure class="figure">
+              <%= image_tag post.image.thumb.url, class: 'figure-img img-fluid rounded'%>
+              <figcaption class="figure-caption"><%= post.descripcion %><br>
+                <%= link_to 'Show', post %>
+                <%= link_to 'Edit', edit_post_path(post) %>
+                <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+                <%= link_to "Descargar" , post.image.url, download: post.image.store_dir %><br><br>
+              </figcaption>
+            </figure>
+          </div>  
+        <% end %>
+        <br><br>
+      </div>
+      <%= link_to 'New Post', new_post_path %>
+    
   </div>
-</div>
+</body>

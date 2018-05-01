@@ -1,32 +1,10 @@
-<div class="page-header"><h1>Upload Photo</h1></div>
-
-<%= form_for @post, html: { multipart: true } do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{pluralize(@post.errors.count, "error")} prohibited this photo from being saved:" %>
-      </h2>
-      <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-          <li>
-            <%= msg %>
-          </li>
-          <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<div class="container">
   <div class="form-group">
-    <%= f.label :titulo %>
-    <%= text_field :titulo, class: 'form-control' %>
-  </div>
+  	<h1>New Post</h1>
 
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, class: 'form-control' %>
-  </div>
+		<%= render 'form', post: @post %>
 
-  <div class="form-group">
-        <%= f.submit 'Upload Post', class: 'btn btn-default' %>
-    </div>
-<% end %>
+		<%= link_to 'Volver', posts_path %>
+  </div>	
+</div>
+  

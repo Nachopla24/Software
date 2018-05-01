@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430191321) do
+ActiveRecord::Schema.define(version: 20180430234400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20180430191321) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "post_id"
   end
 
   create_table "asignaturas", force: :cascade do |t|
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180430191321) do
     t.string "codigo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "departamento_id"
   end
 
   create_table "departamentos", force: :cascade do |t|
@@ -62,18 +62,18 @@ ActiveRecord::Schema.define(version: 20180430191321) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "carreras_id"
+    t.integer "universidad_id"
   end
 
   create_table "posts", force: :cascade do |t|
+    t.bigint "alumno_id"
     t.string "titulo"
     t.string "descripcion"
+    t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
+    t.string "image"
+    t.index ["alumno_id"], name: "index_posts_on_alumno_id"
   end
 
   create_table "universidads", force: :cascade do |t|
@@ -83,14 +83,13 @@ ActiveRecord::Schema.define(version: 20180430191321) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "departamento_id"
   end
 
   add_foreign_key "alumnoAsignatura", "alumnos", column: "alumnos_id"
   add_foreign_key "alumnoAsignatura", "asignaturas", column: "asignaturas_id"
-  add_foreign_key "alumnos", "posts"
   add_foreign_key "carreraAsignatura", "asignaturas", column: "asignaturas_id"
   add_foreign_key "carreraAsignatura", "carreras", column: "carreras_id"
-  add_foreign_key "departamentos", "carreras", column: "carreras_id"
-  add_foreign_key "universidads", "departamentos"
+  add_foreign_key "carreras", "departamentos"
+  add_foreign_key "departamentos", "universidads"
+  add_foreign_key "posts", "alumnos"
 end
