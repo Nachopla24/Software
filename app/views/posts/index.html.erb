@@ -1,7 +1,4 @@
-<body class="body-color">
-  <div class="container">
-    
-      <div class="jumbotron borde">
+<div class="jumbotron borde", style="background-color:#A2A5A2 ">
         <h1>Bienvenidos a Goodness</h1>
         <p>Aqui encontraras toda clase de informacion acerca de distintas asignaturas, cursadas en diferentes universidades del pais; esta plataforma tiene como finalidad ayudar aquellos que busquen informacion captada por estudiantes universitarios </p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
@@ -22,8 +19,5 @@
           </div>  
         <% end %>
         <br><br>
-      </div>
-      <%= link_to 'New Post', new_post_path %>
-    
-  </div>
-</body>
+</div>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary btn-lg'  %>

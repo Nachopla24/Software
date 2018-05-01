@@ -11,7 +11,7 @@ gem 'mini_magick'
 #devise para autentificacion 
 gem 'devise'
 # Agrega gema bootstrap-sass para el Fonted
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.1.0'
 gem 'jquery-rails'
 gem "paperclip", "~> 5.0.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
