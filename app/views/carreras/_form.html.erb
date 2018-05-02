@@ -10,28 +10,32 @@
       </ul>
     </div>
   <% end %>
+<form>
+  <div class="field form-group">
+    <%= form.label :departamento, "Departamento" %>
+    <%= form.collection_select :id_departamento, Departamento.all, :id, :nombre , {include_blank: 'Selecciona '}, class: 'form-control'%>
+  </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :nombre %>
-    <%= form.text_field :nombre, id: :carrera_nombre %>
+    <%= form.text_field :nombre, id: :carrera_nombre, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :asignaturas %>
-    <%= form.collection_select :id_asignatura, Asignatura.all, :id, :nombre , {include_blank: 'SElecciona '} %>
-  </div>
-
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :descripcion %>
-    <%= form.text_field :descripcion, id: :carrera_descripcion %>
+    <%= form.text_field :descripcion, id: :carrera_descripcion, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :codigo %>
-    <%= form.text_field :codigo, id: :carrera_codigo %>
+    <%= form.text_field :codigo, id: :carrera_codigo, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <div class="actions form-group">
+    <%= form.submit "Guardar", class: 'btn btn-primary btn-md'%>
+  </div>  
+</form>
+
 <% end %>
+
+

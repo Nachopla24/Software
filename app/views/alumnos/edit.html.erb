@@ -1,6 +1,8 @@
-<h1>Editing Alumno</h1>
+<div class="container">
+	<h1>Editing Alumno</h1>
 
-<%= render 'form', alumno: @alumno %>
+	<%= render 'form', alumno: @alumno %>
+	<%= link_to 'Show', @alumno %> |
+	<%= link_to 'Back', alumnos_path %>
+</div>
 
-<%= link_to 'Show', @alumno %> |
-<%= link_to 'Back', alumnos_path %>

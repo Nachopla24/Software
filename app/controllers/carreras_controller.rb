@@ -69,6 +69,6 @@ class CarrerasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def carrera_params
-      params.require(:carrera).permit(:nombre, :descripcion, :codigo)
+      params.require(:carrera).permit(:departamento_id, :nombre, :descripcion, :codigo)
     end
 end

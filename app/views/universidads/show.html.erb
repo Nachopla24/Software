@@ -1,24 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @universidad.nombre %>
-</p>
+	<p>
+	  <strong>Nombre:</strong>
+	  <%= @universidad.nombre %>
+	</p>
 
-<p>
-  <strong>Direccion:</strong>
-  <%= @universidad.direccion %>
-</p>
+	<p>
+	  <strong>Direccion:</strong>
+	  <%= @universidad.direccion %>
+	</p>
 
-<p>
-  <strong>Numdireccion:</strong>
-  <%= @universidad.numDireccion %>
-</p>
+	<p>
+	  <strong>Numdireccion:</strong>
+	  <%= @universidad.numDireccion %>
+	</p>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @universidad.descripcion %>
-</p>
+	<p>
+	  <strong>Descripcion:</strong>
+	  <%= @universidad.descripcion %>
+	</p>
 
-<%= link_to 'Edit', edit_universidad_path(@universidad) %> |
-<%= link_to 'Back', universidads_path %>
+	<%= link_to 'Edit', edit_universidad_path(@universidad) %> |
+	<%= link_to 'Back', universidads_path %>		
+</div>
+
