@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20180430234400) do
     t.string "codigo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "departamento_id"
   end
 
   create_table "departamentos", force: :cascade do |t|
@@ -62,7 +61,7 @@ ActiveRecord::Schema.define(version: 20180430234400) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "universidad_id"
+    t.integer "carreras_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -83,13 +82,14 @@ ActiveRecord::Schema.define(version: 20180430234400) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "departamento_id"
   end
 
   add_foreign_key "alumnoAsignatura", "alumnos", column: "alumnos_id"
   add_foreign_key "alumnoAsignatura", "asignaturas", column: "asignaturas_id"
   add_foreign_key "carreraAsignatura", "asignaturas", column: "asignaturas_id"
   add_foreign_key "carreraAsignatura", "carreras", column: "carreras_id"
-  add_foreign_key "carreras", "departamentos"
-  add_foreign_key "departamentos", "universidads"
+  add_foreign_key "departamentos", "carreras", column: "carreras_id"
   add_foreign_key "posts", "alumnos"
+  add_foreign_key "universidads", "departamentos"
 end
