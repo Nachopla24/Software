@@ -1,9 +1,12 @@
 <div class="container">
+
+ 
+
   <p id="notice"><%= notice %></p>
 
   <h1>Universidades</h1>
 
-  <table class="table table-striped borde">
+  <table class="table table-striped" id="tabla-univerisad">
     <thead class="thead-dark">
       <tr>
         <th>Nombre</th>
@@ -21,7 +24,7 @@
           <td><%= universidad.direccion %></td>
           <td><%= universidad.numDireccion %></td>
           <td><%= universidad.descripcion %></td>
-          <td><%= link_to 'Show', universidad %></td>
+          <td><%= link_to 'Show', universidad, class: "btn btn-danger" %></td>
           <td><%= link_to 'Edit', edit_universidad_path(universidad) %></td>
           <td><%= link_to 'Destroy', universidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -33,6 +36,13 @@
 
   <%= link_to 'Nueva Universidad', new_universidad_path, class: 'btn btn-primary btn-md' %>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#tabla-univerisad').DataTable();
+} );
+</script>
 
 
 

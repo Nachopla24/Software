@@ -15,13 +15,13 @@
 
     <tbody>
       <% @carreras.each do |carrera| %>
-        <tr class="table-primary">
+        <tr class="bg-primary">
           <td><%= carrera.nombre %></td>
           <td><%= carrera.descripcion %></td>
           <td><%= carrera.codigo %></td>
-          <td><%= link_to 'Show', carrera %></td>
-          <td><%= link_to 'Edit', edit_carrera_path(carrera) %></td>
-          <td><%= link_to 'Destroy', carrera, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Ver', carrera, class: "btn btn-danger"  %></td>
+          <td><%= link_to 'Editar', edit_carrera_path(carrera), class: "btn btn-success"  %></td>
+          <td><%= link_to 'Eliminar', carrera, method: :delete, class: "btn btn-warning" , data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

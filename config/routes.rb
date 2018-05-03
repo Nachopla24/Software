@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :alumnos
   resources :asignaturas
   resources :carreras
-  resources :departamentos
   resources :universidads
   root 'posts#index'
 

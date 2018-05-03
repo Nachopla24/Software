@@ -1,4 +1,4 @@
 class Asignatura < ApplicationRecord
-	has_and_belongs_to_many :carreras
-	has_and_belongs_to_many :alumnos, dependent: :destroy
+	has_many :carreraAsignatura
+	has_many :alumnos
 end
