@@ -12,8 +12,8 @@
   <% end %>
 <form>
   <div class="field form-group">
-    <%= form.label :departamento, "Departamento" %>
-    <%= form.collection_select :id_departamento, Departamento.all, :id, :nombre , {include_blank: 'Selecciona '}, class: 'form-control'%>
+    <%= form.label :Universidad, "Universidad" %>
+    <%= form.collection_select :id_universidad, Universidad.all, :id, :nombre , {include_blank: 'Selecciona '}, class: 'form-control'%>
   </div>
 
   <div class="field form-group">
@@ -27,7 +27,7 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label :codigo %>
+    <%= form.label :Abreviacion %>
     <%= form.text_field :codigo, id: :carrera_codigo, class: 'form-control' %>
   </div>
 

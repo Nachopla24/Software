@@ -2,16 +2,12 @@
   <div class="form-group">
   <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <div class="alert alert-danger">
+        <h4 class="alert-heading">Oh no!</h4>
+        <p>Ha ocurrido un error</p>  
+      </div>
+    <%end%>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :alumno_id %><br>
@@ -25,7 +21,13 @@
 
   <div class="field">
     <%= form.label :descripcion %>
-    <%= form.text_field :descripcion, id: :post_descripcion, class: 'form-control' %><br>
+    <%= form.text_field :descripcion, id: :post_descripcion, class: 'form-control' %>
+    <% if post.errors.any? %>
+      <span class="badge badge-pill badge-danger">
+        <%= @post.errors[:descripcion].first %>
+      </span>
+    <%end%>
+    <br>
   </div>
 
   

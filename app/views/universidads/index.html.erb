@@ -25,8 +25,8 @@
           <td><%= universidad.numDireccion %></td>
           <td><%= universidad.descripcion %></td>
           <td><%= link_to 'Show', universidad, class: "btn btn-danger" %></td>
-          <td><%= link_to 'Edit', edit_universidad_path(universidad) %></td>
-          <td><%= link_to 'Destroy', universidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_universidad_path(universidad), class: "btn btn-primary"%></td>
+          <td><%= link_to 'Destroy', universidad, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -34,7 +34,7 @@
 
   <br>
 
-  <%= link_to 'Nueva Universidad', new_universidad_path, class: 'btn btn-primary btn-md' %>
+  <%= link_to 'Nueva Universidad', new_universidad_path, class: "btn btn-primary"  %>
 </div>
 
 
