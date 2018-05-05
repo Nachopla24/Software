@@ -1,12 +1,7 @@
 class Asignatura < ApplicationRecord
-<<<<<<< HEAD
 	has_many :carreraAsignatura
-	has_many :alumnos
-=======
-	has_and_belongs_to_many :carreras
-	has_and_belongs_to_many :alumnos, dependent: :destroy
+	has_many :alumnoAsignatura
 	validates :nombre, presence: {:message => 'No puede quedar vacío'}
 	validates :nombre, length: {in: 7..60, too_short: "Demasiado corto", too_long: "Demasiado largo"}
 	validates :descripcion, length: {maximum: 500, too_long: ": %{count} caracteres es el máximo permitido"}
->>>>>>> eb61988e53128dbffef7f644e2ebf179802ad635
 end
