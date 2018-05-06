@@ -10,26 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503220335) do
+ActiveRecord::Schema.define(version: 20180506175146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "alumnoAsignatura", force: :cascade do |t|
-    t.bigint "alumnos_id"
-    t.bigint "asignaturas_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["alumnos_id"], name: "index_alumnoAsignatura_on_alumnos_id"
-    t.index ["asignaturas_id"], name: "index_alumnoAsignatura_on_asignaturas_id"
-  end
-
-  create_table "alumnos", force: :cascade do |t|
-    t.string "nombre"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "asignaturas", force: :cascade do |t|
     t.string "nombre"
@@ -57,24 +41,14 @@ ActiveRecord::Schema.define(version: 20180503220335) do
     t.integer "universidad_id"
   end
 
-  create_table "departamentos", force: :cascade do |t|
-    t.string "nombre"
-    t.string "descripcion"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "carreras_id"
-
-  end
-
   create_table "posts", force: :cascade do |t|
-    t.bigint "alumno_id"
     t.string "titulo"
     t.string "descripcion"
     t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.index ["alumno_id"], name: "index_posts_on_alumno_id"
+    t.integer "user_id"
   end
 
   create_table "universidads", force: :cascade do |t|
@@ -84,15 +58,40 @@ ActiveRecord::Schema.define(version: 20180503220335) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "departamento_id"
   end
 
-  add_foreign_key "alumnoAsignatura", "alumnos", column: "alumnos_id"
-  add_foreign_key "alumnoAsignatura", "asignaturas", column: "asignaturas_id"
+  create_table "userAsignatura", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "asignaturas_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asignaturas_id"], name: "index_userAsignatura_on_asignaturas_id"
+    t.index ["users_id"], name: "index_userAsignatura_on_users_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "nombre"
+    t.boolean "alumno"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "carreraAsignatura", "asignaturas", column: "asignaturas_id"
   add_foreign_key "carreraAsignatura", "carreras", column: "carreras_id"
   add_foreign_key "carreras", "universidads"
-  add_foreign_key "departamentos", "carreras", column: "carreras_id"
-  add_foreign_key "posts", "alumnos"
-  add_foreign_key "universidads", "departamentos"
+  add_foreign_key "posts", "users"
+  add_foreign_key "userAsignatura", "asignaturas", column: "asignaturas_id"
+  add_foreign_key "userAsignatura", "users", column: "users_id"
 end

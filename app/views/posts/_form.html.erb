@@ -10,8 +10,8 @@
 
 
   <div class="field">
-    <%= form.label :alumno_id %><br>
-    <%= form.select :alumno_id, Alumno.all.collect { |p| [ p.nombre, p.id ] }, include_blank: true %>
+    <%= form.label :user_id %><br>
+    <%= form.select :user_id, User.all.collect { |p| [ p.nombre] }, include_blank: true %>
   </div>
 
   <div class="field">

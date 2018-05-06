@@ -14,13 +14,17 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Otros
+          Sesion
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Iniciar sesion</a>
-          <a class="dropdown-item" href="#">Registrarse</a>
+          <%if user_signed_in? %>
+          <a class="dropdown-item" data-method="delete" href="/users/sign_out">Cerrar Sesion</a>
+          <a class="dropdown-item" href="/users/edit">Editar mis datos</a>
+          <%else%>
+          <a class="dropdown-item" href="/users/sign_in">Iniciar sesion</a>
+          <a class="dropdown-item" href="/users/sign_up">Registrarse</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%end%>
         </div>
       </li>
     </ul>
@@ -30,4 +34,4 @@
     </form>
   </div>
 </nav>
-    
+

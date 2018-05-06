@@ -1,9 +1,11 @@
-<div class="jumbotron rounded", style="background-image: url('/assets/fcs_00.jpg')"">
+<div class="jumbotron rounded", style="background-image: url('/assets/casa-central-adm.jpg')"">
         <h1 class="text-warning">Bienvenidos a Goodness</h1>
         <p class="text-danger font-weight-bold">Proyecto de almacenamiento de imagenes donde encontraras toda clase de informacion acerca de distintas asignaturas, cursadas en diferentes universidades del pais; esta plataforma tiene como finalidad ayudar aquellos que busquen informacion captada por estudiantes universitarios, este software es desarrollado por alumnos de la universidad tecnologica metropolitana de Chile </p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 <div class="container">
+<p class="notice text-primary"><%= notice %></p>
+<p class="alert text-primary"> <%= alert %></p>
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-sm-4 ">
