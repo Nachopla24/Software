@@ -6,6 +6,9 @@
 <div class="container">
 <p class="notice text-primary"><%= notice %></p>
 <p class="alert text-primary"> <%= alert %></p>
+<% if user_signed_in? %>
+  <p><%= current_user.nombre %></p>
+<%end%>
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-sm-4 ">

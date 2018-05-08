@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :posts
-  resources :alumnos
   resources :asignaturas
   resources :carreras
   resources :universidads
