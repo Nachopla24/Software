@@ -9,7 +9,7 @@
         <%end%>
 
       <div class="field form-group">
-        <%= form.label :nombre %>
+        <%= form.label :nombre, "Nombre de la Universidad:" %>
         <%= form.text_field :nombre, id: :universidad_nombre, class: 'form-control' %>
           <% if universidad.errors.any? %>
           <span class="badge badge-pill badge-danger">
@@ -19,17 +19,17 @@
       </div>
 
       <div class="field form-group">
-        <%= form.label :direccion %>
+        <%= form.label :direccion, "Dirección:" %>
         <%= form.text_field :direccion, id: :universidad_direccion, class: 'form-control' %>
       </div>
 
       <div class="field form-group">
-        <%= form.label :numDireccion %>
+        <%= form.label :numDireccion, "Número:" %>
         <%= form.number_field :numDireccion, id: :universidad_numDireccion, class: 'form-control' %>
       </div>
 
       <div class="field form-group">
-        <%= form.label :descripcion %>
+        <%= form.label :descripcion, "Descripción de la Universidad:" %>
         <%= form.text_field :descripcion, id: :universidad_descripcion, class: 'form-control' %>
         <% if universidad.errors.any? %>
           <span class="badge badge-pill badge-danger">
