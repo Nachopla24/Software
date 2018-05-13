@@ -11,7 +11,7 @@
       <div class="field form-group">
         <%= form.label :nombre, "Nombre de la Universidad:" %>
         <%= form.text_field :nombre, id: :universidad_nombre, class: 'form-control' %>
-          <% if universidad.errors.any? %>
+        <% if universidad.errors.any? %>
           <span class="badge badge-pill badge-danger">
             <%= @universidad.errors[:nombre].first %>
           </span>
@@ -21,11 +21,21 @@
       <div class="field form-group">
         <%= form.label :direccion, "Dirección:" %>
         <%= form.text_field :direccion, id: :universidad_direccion, class: 'form-control' %>
+        <% if universidad.errors.any? %>
+          <span class="badge badge-pill badge-danger">
+            <%= @universidad.errors[:direccion].first %>
+          </span>
+        <%end%>
       </div>
 
       <div class="field form-group">
         <%= form.label :numDireccion, "Número:" %>
         <%= form.number_field :numDireccion, id: :universidad_numDireccion, class: 'form-control' %>
+        <% if universidad.errors.any? %>
+          <span class="badge badge-pill badge-danger">
+            <%= @universidad.errors[:numDireccion].first %>
+          </span>
+        <%end%>
       </div>
 
       <div class="field form-group">
