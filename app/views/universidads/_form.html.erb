@@ -20,27 +20,28 @@
 
       <div class="field form-group">
         <%= form.label :direccion, "Dirección:" %>
-        <%= form.text_field :direccion, id: :universidad_direccion, class: 'form-control' %>
-        <% if universidad.errors.any? %>
-          <span class="badge badge-pill badge-danger">
-            <%= @universidad.errors[:direccion].first %>
-          </span>
-        <%end%>
-      </div>
-
-      <div class="field form-group">
-        <%= form.label :numDireccion, "Número:" %>
-        <%= form.number_field :numDireccion, id: :universidad_numDireccion, class: 'form-control' %>
-        <% if universidad.errors.any? %>
-          <span class="badge badge-pill badge-danger">
-            <%= @universidad.errors[:numDireccion].first %>
-          </span>
-        <%end%>
+        <div class="field form-inline">
+          <div class="w-75">
+            <%= form.text_field :direccion, id: :universidad_direccion, size: '90',class: 'form-control'%>
+            <% if universidad.errors.any? %>
+              <span class="badge badge-pill badge-danger">
+                <%= @universidad.errors[:direccion].first %>
+              </span>
+            <%end%>
+          </div>
+          <%= form.label :numDireccion, "#" %>
+          <%= form.number_field :numDireccion, id: :universidad_numDireccion, class: 'form-control' %>
+          <% if universidad.errors.any? %>
+            <span class="badge badge-pill badge-danger">
+              <%= @universidad.errors[:numDireccion].first %>
+            </span>
+          <%end%>
+        </div>
       </div>
 
       <div class="field form-group">
         <%= form.label :descripcion, "Descripción de la Universidad:" %>
-        <%= form.text_field :descripcion, id: :universidad_descripcion, class: 'form-control' %>
+        <%= form.text_area :descripcion, id: :universidad_descripcion, rows: 10, class: 'form-control' %>
         <% if universidad.errors.any? %>
           <span class="badge badge-pill badge-danger">
             <%= @universidad.errors[:descripcion].first %>

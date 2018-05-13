@@ -10,5 +10,5 @@ class Universidad < ApplicationRecord
 	validates :numDireccion, length: {in: 2..5}
 	validates :numDireccion, numericality: {greater_than: 0}
 	validates :descripcion, presence: true
-	validates :descripcion, length: {in: 3..500}
+	validates :descripcion, length: {in: 3..1000}
 end
