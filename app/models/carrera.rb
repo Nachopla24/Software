@@ -1,6 +1,7 @@
 class Carrera < ApplicationRecord
 	belongs_to :universidad
-	has_many :carreraAsignatura	
+	has_many :carreraAsignatura
+	has_many :asignaturas, through: :carreraAsignatura	
 	belongs_to :departamento
 	validates :nombre, presence: true
 	validates :nombre, length: {in: 7..80, too_short: "Demasiado corto", too_long: "Demasiado largo"}

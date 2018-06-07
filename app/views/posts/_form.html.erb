@@ -14,8 +14,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :Usuario %>
-    <%= form.label :user_id, User.all.collect { |p| [ p.nombre, p.id ] }, include_blank: true %>
+    <%= form.label :universidad_id %>
+    <%= form.select :universidad_id, Universidad.all.collect { |p| [ p.nombre, p.id ] }, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usuario, "Usuario: " %>
+    <%= current_user.nombre %>
   </div>  
 
   <div class="field">
