@@ -8,6 +8,7 @@ end
 #para el attachment de imagen a post
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+gem 'will_paginate', '~> 3.1.0'
 #devise para autentificacion 
 gem 'devise'
 # Agrega gema bootstrap-sass para el Fonted

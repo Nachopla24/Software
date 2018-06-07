@@ -25,6 +25,7 @@
     <% end %>
     <br><br>
   </div>
+  <%= will_paginate @posts %>
   <% if user_signed_in? %>
     <%= link_to 'Nuevo Post', new_post_path, class: 'btn btn-primary btn-lg'  %>  
   <%end%>

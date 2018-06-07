@@ -4,7 +4,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where user_id: current_user.id
+    if user_signed_in?
+    @posts = Post.order(id: :desc)
+                 .where user_id: current_user.id
+    end
   end
 
   # GET /posts/1
