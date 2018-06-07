@@ -1,12 +1,8 @@
 class Carrera < ApplicationRecord
 	belongs_to :universidad
-<<<<<<< HEAD
 	has_many :carreraAsignatura
 	has_many :asignaturas, through: :carreraAsignatura	
 	belongs_to :departamento
-=======
-	has_many :carreraAsignatura	
->>>>>>> af947aed67451242eedfb1d193c06ff88c6ff0fd
 	validates :nombre, presence: true
 	validates :nombre, length: {in: 7..80, too_short: "Demasiado corto", too_long: "Demasiado largo"}
 	validates_format_of :nombre, :with => /\A[A-Z a-z á é í ó ú ñ - ']+\z/
