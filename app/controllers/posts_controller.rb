@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote]
 
   # GET /posts
   # GET /posts.json
@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     if user_signed_in?
     @posts = Post.order(id: :desc)
                  .where user_id: current_user.id
+
     end
   end
 
@@ -62,6 +63,12 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  #Upvote from user
+  def upvote
+    @post.upvote_from current_user
+    redirect_to posts_path
   end
 
   private
