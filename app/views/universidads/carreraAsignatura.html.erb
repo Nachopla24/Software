@@ -1,0 +1,34 @@
+<h1><%= @universidad.nombre %> CarreraAsignatura</h1>
+
+<%= form_for(@universidad) do |f| %>
+  <% @asignatura.each do |asignatura| -%>
+  <h3><%= asignatura.nombre %></h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Nombre</td>
+        <td>Descripcion</td>
+        <td>Codigo</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @carrera.each do |carrera| -%>
+      <tr>
+        <td><%= carrera.nombre %></td>
+        <td>
+        <%= f.fields_for :carreras, carrera do |q| -%>
+          <%= q.fields_for :carreraAsignatura, carrera.carreraAsignatura.find_or_initialize_by(asignatura: asignatura) do |a| -%>
+            <%= a.text_field :descripcion %>
+            <%= a.hidden_field :asignatura_id, asignatura.id %>
+          <% end -%>
+        <% end -%>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+  <% end -%>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

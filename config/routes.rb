@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  root 'welcome#index'
+  resources :universidads 
   resources :asignaturas
   resources :carreras
-  resources :universidads
-  root 'welcome#index'
+  devise_for :users
   resources :posts do 
     member do 
       put "like" => "posts#upvote"

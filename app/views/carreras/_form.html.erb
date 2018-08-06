@@ -13,7 +13,7 @@
 <form>
   <div class="field form-group">
     <%= form.label :Universidad, "Universidad" %>
-    <%= form.collection_select :id_universidad, Universidad.all, :id, :nombre , {include_blank: 'Selecciona '}, class: 'form-control'%>
+    <%= form.collection_select :universidad_id, Universidad.all, :id, :nombre , {include_blank: 'Selecciona '}, class: 'form-control'%>
   </div>
 
   <div class="field form-group">
@@ -31,11 +31,18 @@
     <%= form.text_field :codigo, id: :carrera_codigo, class: 'form-control' %>
   </div>
 
+    <tbody class="fields">
+      <%= form.fields_for :asignaturas do |builder|%>
+      <%= render 'asignatura', form: builder %>
+    </tbody>
+  
+  <% end %>
+
   <div class="actions form-group">
     <%= form.submit "Guardar", class: 'btn btn-primary btn-md'%>
   </div>  
-</form>
 
+</form>
 <% end %>
 
 
