@@ -10,70 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180622060415) do
+ActiveRecord::Schema.define(version: 20180603192450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "asignaturas", force: :cascade do |t|
+  create_table "majors", force: :cascade do |t|
     t.string "nombre"
-    t.string "descripcion"
-    t.string "codigo"
+    t.bigint "university_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "carreraAsignatura", force: :cascade do |t|
-    t.bigint "carreras_id"
-    t.bigint "asignaturas_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["asignaturas_id"], name: "index_carreraAsignatura_on_asignaturas_id"
-    t.index ["carreras_id"], name: "index_carreraAsignatura_on_carreras_id"
-  end
-
-  create_table "carreras", force: :cascade do |t|
-    t.string "nombre"
-    t.string "descripcion"
-    t.string "codigo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "universidad_id"
+    t.index ["university_id"], name: "index_majors_on_university_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "titulo"
-    t.string "descripcion"
-    t.integer "likes"
+    t.string "title"
+    t.text "body"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.integer "user_id"
-    t.integer "cached_votes_total", default: 0
-    t.integer "cached_votes_score", default: 0
-    t.integer "cached_votes_up", default: 0
-    t.integer "cached_votes_down", default: 0
-    t.integer "cached_weighted_score", default: 0
-    t.integer "cached_weighted_total", default: 0
-    t.float "cached_weighted_average", default: 0.0
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "universidads", force: :cascade do |t|
-    t.string "nombre"
-    t.string "direccion"
-    t.integer "numDireccion"
+  create_table "roles", force: :cascade do |t|
+    t.boolean "superadmin_role"
+    t.boolean "supervisor_role"
+    t.boolean "user_role", default: true
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_roles_on_user_id"
+  end
+
+  create_table "universities", force: :cascade do |t|
+    t.string "name"
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "userAsignatura", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "asignaturas_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["asignaturas_id"], name: "index_userAsignatura_on_asignaturas_id"
-    t.index ["users_id"], name: "index_userAsignatura_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,34 +58,20 @@ ActiveRecord::Schema.define(version: 20180622060415) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "nombre"
-    t.boolean "alumno"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "avatar"
+    t.bigint "university_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["university_id"], name: "index_users_on_university_id"
   end
 
-  create_table "votes", id: :serial, force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-  end
-
-  add_foreign_key "carreraAsignatura", "asignaturas", column: "asignaturas_id"
-  add_foreign_key "carreraAsignatura", "carreras", column: "carreras_id"
-  add_foreign_key "carreras", "universidads"
+  add_foreign_key "majors", "universities"
   add_foreign_key "posts", "users"
-  add_foreign_key "userAsignatura", "asignaturas", column: "asignaturas_id"
-  add_foreign_key "userAsignatura", "users", column: "users_id"
+  add_foreign_key "roles", "users"
+  add_foreign_key "users", "universities"
 end
