@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603192450) do
+ActiveRecord::Schema.define(version: 20180613011414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "majors", force: :cascade do |t|
     t.string "nombre"
@@ -29,7 +35,19 @@ ActiveRecord::Schema.define(version: 20180603192450) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.bigint "major_id"
+    t.string "post_image"
+    t.index ["course_id"], name: "index_posts_on_course_id"
+    t.index ["major_id"], name: "index_posts_on_major_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "course_id"
+    t.integer "major_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -47,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180603192450) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,6 +90,8 @@ ActiveRecord::Schema.define(version: 20180603192450) do
   end
 
   add_foreign_key "majors", "universities"
+  add_foreign_key "posts", "courses"
+  add_foreign_key "posts", "majors"
   add_foreign_key "posts", "users"
   add_foreign_key "roles", "users"
   add_foreign_key "users", "universities"
