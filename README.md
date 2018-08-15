@@ -1,24 +1,31 @@
-# README
+# Blog University
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# TL;DR
+Un user puede pertenecer a una universidad, una universidad posee Carreras , una Carrera posee Cursos o Asignaturas
 
-Things you may want to cover:
+# Tipos de usuarios :
 
-* Ruby version
+* Normal solo puede publicar
 
-* System dependencies
+* Supervisor Modera las publicaciones
 
-* Configuration
+* Administrador Control total
 
-* Database creation
+# Instalación
+Luego de clonar el proyecto :
 
-* Database initialization
+* bundle install
 
-* How to run the test suite
+* rails db:create
 
-* Services (job queues, cache servers, search engines, etc.)
+* rails db:migrate
 
-* Deployment instructions
+* rails db:seed
 
-* ...
+* rails server
+
+3 tipos de usuarios, admin, supervisor y usuario normal.
+
+* admin@domain.com , contraseña : admin123
+* supervisor@domain.com , contraseña : supervisor123
+* user@domain.com, contraseña : user123

@@ -4,22 +4,11 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-#nested forms with cocoon
-gem "cocoon"
-#para el attachment de imagen a post
-gem 'carrierwave', '~> 1.0'
-gem 'mini_magick'
-gem 'will_paginate', '~> 3.1.0'
-#devise para autentificacion 
-gem 'devise'
-# Agrega gema bootstrap-sass para el Fonted
-gem 'bootstrap', '~> 4.1.0'
-gem 'jquery-rails'
-gem "paperclip", "~> 5.0.0"
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 0.21.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -28,8 +17,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-#Acts_as_votable
-gem 'acts_as_votable'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -44,6 +31,24 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'devise'
+gem 'record_tag_helper', '~> 1.0'
+gem 'carrierwave', '~> 1.0'
+gem 'bootstrap', '~> 4.0.0.beta'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'best_in_place'
+gem 'cancancan'
+gem 'rails_admin', '~> 1.2'
+gem 'will_paginate'
+gem 'cocoon'
+gem 'font-awesome-rails', '~> 4.3'
+gem 'owlcarousel-rails'
+gem 'rename'
+gem 'ckeditor'
+gem 'mini_magick'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
