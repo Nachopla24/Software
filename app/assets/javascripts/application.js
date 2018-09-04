@@ -10,14 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
-//= require best_in_place
-//= require jquery-ui
+//= require jquery
 //= require rails-ujs
+//= require jquery-ui/autocomplete
+//= require jquery-ui
 //= require popper
 //= require cocoon
 //= require bootstrap-sprockets
-//= require rails-ujs
 //= require turbolinks
 //= require owl.carousel
 //= require ckeditor/init
@@ -53,4 +52,24 @@ $(document).on('turbolinks:load', function() {
         autoplay: true,
         dots: true
     });
+});
+
+$(document).on('turbolinks:load', function() {
+  $('#search').autocomplete({
+    open: function(){
+        setTimeout(function () {
+            $('.ui-autocomplete').css('z-index', 99999999999999);
+        }, 0);
+    }
+  });
+});
+
+$(document).on('turbolinks:load', function() {
+  $("#search").val('');
+});
+
+$(document).on('turbolinks:load', function() {
+  $('#search').autocomplete({
+    source: $('#search').data('autocomplete-source')
+  });
 });

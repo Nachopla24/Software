@@ -1,6 +1,6 @@
 # University Controller
 class UniversitiesController < ApplicationController
-  before_action :set_university, only: %i[show edit update destroy]
+  before_action :set_university, only: %i[show edit update destroy show_posts]
   load_and_authorize_resource
 
   def index
@@ -17,12 +17,20 @@ class UniversitiesController < ApplicationController
     @university = University.new(university_params)
 
     respond_to do |format|
-      format.js {} if @university.save
+      if @university.save
+        format.js {}
+      else
+        format.js { 'create' }
+      end
     end
   end
 
   def show
     @carreras = University.majors_university(params[:id])
+  end
+  
+  def show_posts
+    @posts_university = Post.post_per_university(params[:id]).order_post.paginate(page: params[:page], per_page: 5)
   end
 
   def destroy
@@ -39,6 +47,11 @@ class UniversitiesController < ApplicationController
     end
   end
 
+  def search_data
+    @universities = University.order(:name).where("name ilike ?", "%#{params[:term]}%")
+    render json: @universities.map(&:name)
+  end
+
   private
 
   def set_university
@@ -50,6 +63,8 @@ class UniversitiesController < ApplicationController
   def university_params
     params.require(:university).permit(:name,
                                        :descripcion,
+                                       :direccion,
+                                       :phone_number,
                                        :image,
                                        majors_attributes:
                                        %i[id nombre _destroy])
