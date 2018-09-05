@@ -1,12 +1,20 @@
-## Blog University
+## Proyecto 'Goodness'
 
-### Demo
-https://bloguniversity.herokuapp.com/
-
-### Descripción 
+### Descripción
 - Sistema de blogging el cual permite publicaciones de un alumno para una asignatura de una carrera.
 
-### Características
+### Requerimientos
+- Gestionar (agregar, ver, modificar, eliminar): universidades, carreras, asignaturas, usuarios y post
+- Listar: universidades, carreras y/o asignaturas.
+- Buscar en la base de datos las universidades a través de un buscador.
+- Existirá un supervisor que revisará las peticiones de post y podrá decidir si publica o no, un post.
+- El administrador podrá quitar un post.
+- Se podrá subir archivos de formato de imagen (jpg, jpeg, gif y  png).
+- Mostrará en la pantalla principal los ultimos post subidos.
+- Descargar el archivo  de un post.
+
+
+### Características del proyecto
 - Sistema de roles para usuarios
 - Sistema de comentarios utilizando disqus
 - Sistema de publicación utilizando ckeditor
@@ -14,22 +22,11 @@ https://bloguniversity.herokuapp.com/
 - El usuario supervisor es quien aprueba las publicaciones
 - Sistema de búsqueda de universidad, mediante autocompletado
 
-### Adicional
-- Para utilizar los comentarios se debe crear el servicio en https://disqus.com/admin/create/ luego configurar el servicio de disqus (url) en el archivo `app/views/users/posts/show.html.erb`
-
 ### Usuarios por defecto
 - admin@domain.com , contraseña : admin123
 - supervisor@domain.com , contraseña : supervisor123
 - user@domain.com, contraseña : user123
 
-### Instalación
-```bash
-bundle install
-rails db:create
-rails db:migrate
-rails db:seed
-rails server
-```
 ### Imágenes
 
 <img src="https://i.imgur.com/A1YSBkL.png" />
