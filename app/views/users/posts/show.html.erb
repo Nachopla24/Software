@@ -1,14 +1,14 @@
-<div class="container col-sm-10 mt-5">
+<div class="container col-sm-6 mt-5">
   <h2><%= @post.title %></h2>
   <span>Autor <a class="text-muted" href="<%= author_path(@post.user.slug) %>"><%= @post.user.username %></a>&ensp;</span><%= @post.created_at.strftime("%d de %b, %Y ") %>
   <p class="center justify text-muted mb-2"><%= @post.name.capitalize %></p>
   <p class="center justify text-muted mb-2">Carrera <%= @post.nombre.capitalize %></p>
   <p class="center justify text-muted"> Curso <%= @post.c_name.capitalize %></p>
-  <%= image_tag(@post.post_image.url, class: 'img-fluid', style: 'width: 100px;
+  <%= image_tag(@post.post_image.url, class: 'img-fluid', style: 'width: 500px;
     border-radius: 50px;
-    height: 100px') %>
+    height: 500px') %>
   <br><br>
-  <%= link_to 'Download Post image', @post.post_image.url, download: '' ,class:'btn-sm btn-primary', style:'text-decoration-line: none;
+  <%= link_to 'Descargar imagen', @post.post_image.url, download: '' ,class:'btn btn-primary', style:'text-decoration-line: none;
     border-radius: 20px'%>
   <p class="center justify mt-4"><%= @post.body.html_safe %></p>
 </div>
