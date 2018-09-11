@@ -43,7 +43,7 @@ class HomeController < ApplicationController
           format.html {  @posts  }
           format.js {}
         else
-            format.html{ redirect_to root_path, notice: "University #{params[:search]} not found"  }
+            format.html{ redirect_to root_path, notice: "Asignatura #{params[:search]} not found"  }
         end
       end
     end
