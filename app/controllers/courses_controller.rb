@@ -35,6 +35,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def search_data
+    @courses = Course.order(:name).where("name ilike ?", "%#{params[:term]}%")
+    render json: @courses.map(&:name)
+  end
+
   private
 
   def set_course

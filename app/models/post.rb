@@ -29,6 +29,10 @@ class Post < ApplicationRecord
     joins(:major => :university).where("universities.name ilike (?) and posts.status = (?)","%#{search}%" , 1)
     .select(:"universities.name", :body, :id, :title, :slug, :user_id, :created_at,:status)
   end
+
+  def self.course_posts(search)
+    Post.joins(:course).where("courses.name ilike (?) and posts.status = (?)", "%#{search}%", 1).select(:"courses.name", :body, :id, :title, :slug, :user_id, :created_at,:status)
+  end
   
   def self.post_per_university(post)
     joins(:major => :university).where("majors.university_id = (?) and posts.status = (?)", post, 1)

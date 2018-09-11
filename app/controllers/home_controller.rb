@@ -35,4 +35,18 @@ class HomeController < ApplicationController
     end
   end
 
+  def search_post_course
+      if params[:search]
+      respond_to do |format|
+        @posts = Post.course_posts(params[:search]).paginate(page: params[:page], per_page: 5)
+        unless @posts.empty?
+          format.html {  @posts  }
+          format.js {}
+        else
+            format.html{ redirect_to root_path, notice: "University #{params[:search]} not found"  }
+        end
+      end
+    end
+  end
+
 end

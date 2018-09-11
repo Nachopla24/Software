@@ -28,11 +28,15 @@ Rails.application.routes.draw do
   end
 
   get 'author/:id', to: 'home#show_author', as: 'author'
-  get 'search', to: 'home#search_post_university', as: 'search_university'
+  get 'search', to: 'home#search_post_course', as: 'search_course'
 
   authenticated :user do
     get 'author_profile/:id', to: 'home#author_profile', as: 'author_profile'
-    resources :courses
+    resources :courses do
+      collection do
+        get :search_data
+      end
+    end    
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     mount Ckeditor::Engine => '/ckeditor'
     get '*path' => redirect('/')

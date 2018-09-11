@@ -40,6 +40,7 @@ class Ability
         can :show, Post
         can :show_posts, University
         can :search_data, University
+        can :search_data, Course
     elsif user.role.superadmin_role
         can :manage, :all
         can :access, :rails_admin       # only allow admin users to access Rails Admin
@@ -61,6 +62,7 @@ class Ability
         can :crud, User, id: user.id
         can :show_posts, University
         can :search_data, University
+        can :search_data, Course
     end
   end
 end
