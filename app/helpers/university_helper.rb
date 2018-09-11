@@ -34,4 +34,7 @@ module UniversityHelper
                                     'data-target' => 'my-modal')
     end
   end
+  def check_posts_empty(c_value)
+    c_value.majors.joins(:posts).where("posts.status = (?)",1)
+  end
 end
